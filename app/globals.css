@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background-color: rgba(232, 163, 61, 0.35);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid #4fd1c5;
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .blueprint-bg {
+    background-image: linear-gradient(rgba(232, 163, 61, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232, 163, 61, 0.07) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .node-line {
+    stroke-dasharray: 6 6;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-flow {
+      stroke-dashoffset: 0;
+      animation: flow 1.6s linear infinite;
+    }
+    .pulse-node {
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-flow,
+    .pulse-node {
+      animation: none !important;
+    }
+  }
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
